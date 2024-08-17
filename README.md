@@ -1,3 +1,5 @@
+I'm bored so I'll fix
+
 # Bark
 
 *Bark* is a mod for the VR game Gorilla Tag. It allows the player to summon a 3D interface into the game that toggles various fun/useful mechanics on and off. Because it is only enabled in modded lobbies, this mod is safe to use online.
