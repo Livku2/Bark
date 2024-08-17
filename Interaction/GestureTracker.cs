@@ -258,7 +258,7 @@ namespace Bark.Gestures
             chest = new GameObject("Body Gesture Collider");
             chest.AddComponent<CapsuleCollider>().isTrigger = true;
             chest.AddComponent<Rigidbody>().isKinematic = true;
-            chest.transform.SetParent(player.transform.FindChildRecursive("Body Collider"), false);
+            chest.transform.SetParent(player.transform.FindChild("Body Collider"), false);
             chest.layer = LayerMask.NameToLayer("Water");
             float
                 height = 1 / 8f,

@@ -91,7 +91,7 @@ namespace Bark.Modules.Multiplayer
                     {
                         continue;
                     }
-                    var rigTransform = rig.transform.FindChildRecursive("head");
+                    var rigTransform = rig.transform.FindChild("head");
                     float distanceToTarget = Vector3.Distance(hand.position, rigTransform.position);
 
                     if (distanceToTarget < closestDistance)

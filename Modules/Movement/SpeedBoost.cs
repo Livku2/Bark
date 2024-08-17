@@ -18,7 +18,7 @@ namespace Bark.Modules
             try
             {
                 progress = "Getting Gamemode\n";
-                var gameMode = GorillaGameManager.instance?.GameMode();
+                var gameMode = GorillaGameManager.instance?.GameModeName();
                 progress = "Checking status\n";
                 if (active && (gameMode is null || gameMode == "NONE" || gameMode == "CASUAL"))
                 {
@@ -30,7 +30,7 @@ namespace Bark.Modules
             catch (Exception e)
             {
                 Logging.Debug("GorillaGameManager.instance is null:", GorillaGameManager.instance is null);
-                Logging.Debug("GorillaGameManager.instance.GameMode() is null:", GorillaGameManager.instance?.GameMode() is null);
+                Logging.Debug("GorillaGameManager.instance.GameMode() is null:", GorillaGameManager.instance?.GameModeName() is null);
                 Logging.Debug(progress);
                 Logging.Exception(e);
             }

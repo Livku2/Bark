@@ -39,6 +39,14 @@ namespace Bark
         NetworkPropertyHandler nph;
 
 
+        void Update()
+        {
+            if (SpeedBoost.active)
+            {
+                GorillaLocomotion.Player.Instance.maxJumpSpeed = SpeedBoost.scale;
+            }
+        }
+
         public void Setup()
         {
             if (menuController || !pluginEnabled || !inRoom) return;
@@ -220,7 +228,7 @@ namespace Bark
 
         IEnumerator JoinLobbyInternal(string name, string gamemode)
         {
-            PhotonNetworkController.Instance.AttemptDisconnect();
+            PhotonNetwork.Disconnect();
             do
             {
                 yield return new WaitForSeconds(1f);
@@ -228,10 +236,10 @@ namespace Bark
             }
             while (PhotonNetwork.InRoom);
             
-            string gamemodeCache = GorillaComputer.instance.currentGameMode;
+            WatchableStringSO gamemodeCache = GorillaComputer.instance.currentGameMode;
             Logging.Debug("Changing gamemode from", gamemodeCache, "to", gamemode);
-            GorillaComputer.instance.currentGameMode = gamemode;
-            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(name);
+            GorillaComputer.instance.currentGameMode.Value = gamemode;
+            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom(name, JoinType.Solo);
 
             while (!PhotonNetwork.InRoom)
             {
