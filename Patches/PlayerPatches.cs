@@ -25,6 +25,26 @@ namespace Bark.Patches
         }
     }
 
+    [HarmonyPatch(typeof(GorillaNetworkPublicTestsJoin))]
+    [HarmonyPatch("GracePeriod", MethodType.Normal)]
+    internal class TagSpeedPatch
+    {
+        private static bool Prefix()
+        {
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(GorillaNetworkPublicTestJoin2))]
+    [HarmonyPatch("GracePeriod", MethodType.Normal)]
+    public class GenericSpeedPatch
+    {
+        private static bool Prefix()
+        {
+            return false;
+        }
+    }
+
     [HarmonyPatch(typeof(Player))]
     [HarmonyPatch("GetSlidePercentage", MethodType.Normal)]
     public class SlidePatch
